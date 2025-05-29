@@ -1,0 +1,692 @@
+/* ========================
+   Global & Root Variables & Dark Mode
+======================== */
+*{
+  box-sizing: border-box; /* Ensures padding and border are included in total element size */
+}
+
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #f4f7fd;
+  --primary-font-color: #000000;
+  --secondary-font-color: #828fa3;
+  --primary-box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1015); /* Subtle shadow for card depth */
+  --sidebar-width: 300px; /* Sidebar fixed width */
+  --accent-color: #E4EBFA; /* background */
+  --font-color: #635fc7;
+}
+.darkmode {
+  --primary-color: #3E3F4E;
+  --secondary-color: #635fc7;
+  --primary-font-color: #ffffff;
+  --secondary-font-color: #828fa3;
+  --primary-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Dark mode shadow */
+  --accent-color: #20212C ; 
+  --font-color: #ffffff;
+}
+
+/* ================
+   Base Elements
+================ */
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex; /* Allow layout to span horizontally */
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--accent-color);
+  font-size: 1rem; /* Base font size for rem scaling */
+}
+
+/* ===============
+   Sidebar Layout
+================ */
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items to the top */
+  background-color: var(--primary-color);
+  border-right: 1px solid #e4ebfa; /* Light divider */
+  width: var(--sidebar-width);
+  height: 100vh;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+}
+
+.side-bar.hidden {
+  transform: translateX(-100%);
+  position: absolute;
+  z-index: 2; /* Ensure sidebar is above other content when hidden */
+}
+
+#side-logo-div {
+  margin: 33px 113px 54px 34px; /* Spacing around logo */
+  display: flex;
+  justify-content: flex-start;
+}
+
+#logo {
+  width: 100%; /* Make logo responsive within container */
+}
+
+.boards-nav-links-div {
+  display: flex;
+  flex-direction: column;
+  color: var(--primary-font-color);
+}
+
+#headline-sidepanel {
+  padding: 0 12px 0 50px; /* Aligns section content from left and right */
+}
+
+h4 {
+  color: var(--secondary-font-color);
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem; /* Makes heading more spaced */
+}
+
+.board-btn {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  background-color: #635fc7;
+  color: white;
+  border: none;
+  border-radius: 0 100px 100px 0; 
+  height: 48px;
+  width: 276px;
+  padding: 28px 12px 28px 50px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden; 
+}
+
+/*---------------
+  lower buttons
+-----------------*/
+#lower-btn {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto; /* This pushes the buttons to the bottom */
+}
+
+ /* ------------
+ Theme Switcher
+ ---------------*/
+.theme-btn {
+ background-color: var(--secondary-color);   
+ border-radius: 10px;     
+ height: auto;                  
+ width: 240px;                  
+ padding: 18px;                
+ border: none;        
+ margin: 15px 10px;      
+ display: flex;             
+ justify-content: center;  
+ align-items: center;     
+}
+
+/* Container for sun icon, switch, and moon icon */
+#switcher {
+ display: flex;     
+ align-items: center;   
+ justify-content: center; 
+ gap: 15px;       
+ font-size: 20px; 
+}
+
+/* Main container for the toggle switch */
+.switch {
+  position: relative;      
+  display: inline-block;         /* Makes it behave like an inline element but allows width/height */
+  width: 40px;               
+  height: 22px;          
+}
+
+/* Hide the default checkbox input */
+.switch input { 
+ opacity: 0;                    /* Makes the checkbox invisible */
+ width: 0;   
+ height: 0;    
+}
+
+/* The slider background that users see and click */
+.slider {
+ position: absolute;    
+ cursor: pointer;            
+ top: 0;                 
+ left: 0;            
+ right: 0;           
+ bottom: 0;                 
+ background-color:  #635fc7;;   
+ -webkit-transition: .4s;    
+ transition: .4s;           
+}
+
+/* The circular toggle button inside the slider */
+ .slider:before {
+ position: absolute;      
+ content: "";                   /* Required for pseudo-element to display */
+ height: 16px; 
+ width: 16px;  
+ bottom: 3px;            
+ background-color: white; ;     
+ -webkit-transition: .4s; 
+ transition: .4s; 
+ margin-left: 3px;;  
+}
+
+/* Change slider background when checkbox is checked */
+input:checked + .slider {
+ background-color: #20212C;     /* Blue background when toggled on */
+}
+
+/* Move the toggle button to the right when checked */
+ input:checked + .slider:before {
+ -webkit-transform: translateX(18px);
+ -ms-transform: translateX(18px);
+ transform: translateX(18px);     
+}
+
+/* Rounded sliders - makes the switch pill-shaped */
+ .slider.round {
+ border-radius: 22px;      
+}
+
+/* Makes the toggle button circular */
+.slider.round:before {
+ border-radius: 50%;   
+}
+
+
+/* The styling of the */
+.hide-sidebar-btn { 
+  display: flex;
+  background-color: var(--secondary-color);
+  border-radius: 0 100px 100px 0;
+  height: 48px;
+  width: 276px;
+  padding: 28px 12px 28px 50px;
+  border: none;
+  align-items: center;
+  gap: 10px;
+  color: var(--font-color);
+  font-size: 0.9375rem;
+  font-weight: bold;
+  margin-bottom: 5px;;
+}
+
+/* Sidebar transition */
+.side-bar {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+}
+
+/* Hidden sidebar */
+.side-bar.hidden {
+  transform: translateX(-100%);
+  position: absolute;
+  z-index: 2;
+}
+
+/* Expand main layout when sidebar is hidden */
+#layout {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* 👀 Button styling */
+#showSidebarBtn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 24px;
+  background-color: var(--secondary-color);
+  color: var(--font-color);
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: none;
+  z-index: 3;
+}
+
+/* ===============
+   Main Layout
+================ */
+#layout {
+  flex: 1; /* Fills remaining space beside sidebar */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+}
+
+/* ===============
+   Header Section
+================ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
+  height: 96px;
+  padding: 0 35px 0 30px;
+  border-bottom: 1px solid #e4ebfa;
+  width: 100%;
+  font-size: 1.875rem;
+  font-weight: 600;
+}
+
+.header-name-div {
+  display: flex;
+  align-items: center;
+}
+
+.logo-mobile {
+  display: none; /* Hidden on desktop; shown on smaller screens */
+}
+
+#adding-btn{
+  color: white;
+  background-color: #635fc7;
+  border: none;
+  padding: 10px 10px;
+  margin:0 0.3em 0.3em 0;
+  border-radius:2em;
+  box-sizing: border-box;
+  text-align:center;
+}
+
+.Move-Task{
+   flex:end; 
+}
+
+/* ===============
+   Board Columns
+================ */
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
+  box-sizing: border-box;
+}
+
+.card-column-main {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 304px)
+  ); /* 3 columns with min size */
+  gap: 8px; /* Space between columns */
+}
+
+.column-div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px;
+}
+
+.column-head-div {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between dot and column title */
+}
+
+.columnHeader {
+  font-size: 0.75rem;
+  letter-spacing: 0.125rem;
+  color: var(--secondary-font-color);
+  margin: 0;
+}
+
+/* Status Dots */
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%; /* Make it circular */
+  display: inline-block;
+}
+
+#todo-dot {
+  background-color: #49c4e5;
+}
+
+#doing-dot {
+  background-color: #8471f2;
+}
+
+#done-dot {
+  background-color: #219c90;
+}
+
+/* ===============
+   Task Cards
+================ */
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-div {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  width: 100%;
+  height: 60px;
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
+  border-radius: 12px;
+  box-shadow: var(--primary-box-shadow);
+  cursor: pointer; /* Indicate it's clickable */
+  margin-bottom: 20px;
+  font-size: 0.9375rem;
+  font-weight: bold;
+}
+
+/* ===============
+   Headings
+================ */
+h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* ===============
+   Modal Styles
+================ */
+
+/* -----------
+Task Modal
+---------------*/
+dialog {
+  position: fixed;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+/* Style the modal box */
+#task-modal::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#task-modal {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  padding: 24px;
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /*font-family: "Plus Jakarta Sans", sans-serif;*/
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #ea5555;
+  transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+  transition-delay: 0.1s; /* Delay before scaling */
+}
+
+.close-btn:hover {
+  transform: scale(1.15);
+  font-weight: 600;
+}
+
+.close-btn:focus {
+  outline: none;
+}
+
+/* Form elements */
+form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.75em;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  color: #828fa3;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #828fa3;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.8125em;
+  resize: vertical;
+}
+
+form select {
+  appearance: none; /* Remove native arrow */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23828FA3" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>')
+    no-repeat right 0.75rem center;
+  background-size: 1.4rem;
+  padding-right: 1rem;
+}
+
+#save-btn {
+ background-color: #635fc7;
+ color: white;
+ border: none;
+ padding: 10px 10px;
+ border-radius:2em;
+ box-sizing: border-box;
+ text-align:center;
+ width: 40%;
+ margin-top: 12px;
+ margin-right: 9%;
+
+}
+
+#deletion-btn{
+ color: white;
+ background-color: #ea5555;
+ border: none;
+ padding: 10px 10px;
+ border-radius:2em;
+ box-sizing: border-box;
+ text-align:center;
+ width: 40%;
+ margin-top: 12px;
+ margin-left: 9%;
+}
+
+/* --------------
+  Add Task Modal
+----------------- */
+#add-task-modal::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#add-task-modal {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  padding: 24px;
+  background-color:  var(--primary-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /*font-family: "Plus Jakarta Sans", sans-serif;*/
+}
+
+#save-task-btn{
+   color: white;
+   background-color: #635fc7;
+   border: none;
+   padding: 10px 10px;
+   margin:0 0.3em 0.3em 0;
+   border-radius:2em;
+   box-sizing: border-box;
+   text-align:center;
+   width: 100%;
+   margin-top: 12px;
+   cursor: pointer; 
+}
+
+
+/* ========================
+   Responsive Styles
+======================== */
+
+/******** Tablets ********/
+@media screen and (max-width: 1023px) {
+  .side-bar {
+    display: none; /* Hide sidebar on tablets and smaller */
+  }
+
+  .side-bar.show-sidebar {
+    display: flex !important;
+    position: fixed; /* Overlay on top of page */
+    height: auto;
+  }
+
+  #side-logo-div {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  body {
+    font-size: 0.8rem;
+  }
+
+  .board-btn {
+    font-size: 0.8rem;
+    padding-left: 15px;
+    margin-right: 15px;
+    font-weight: 700;
+  }
+
+  .container {
+    padding: 0;
+    width: 100%;
+    align-items: center; /* Center columns on smaller screens */
+  }
+
+  .card-column-main {
+    grid-template-columns: repeat(2, minmax(0, 360px));
+    gap: 8px;
+  }
+
+  header {
+    height: 64px;
+    padding: 0 10px 0 18px;
+    border: none;
+  }
+
+  #header-board-name {
+   display:none; /* Hide board name on smaller screens */
+  }
+
+  .task-div {
+    width: 100%;
+  }
+
+  .columnHeader {
+    font-size: 0.75rem;
+  }
+
+  .dot {
+    height: 8px;
+    width: 8px;
+  }
+
+  .column-head-div {
+    gap: 8px;
+  }
+
+  .column-div {
+    width: 100%;
+  }
+
+}
+
+/******** Mobile ********/
+@media screen and (max-width: 576px) {
+  .card-column-main {
+    grid-template-columns: minmax(
+      0,
+      380px
+    ); /* Stack columns in single column */
+  }
+
+  .column-div {
+    padding: 24px;
+  }
+
+  .remainder{
+        display: none;
+  }
+
+
+  body.sidebar-hidden #main-content {
+    margin-top: 0;
+  }
+
+ /* Sidebar - positioned at top, slides down when shown */
+  #side-bar-div {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 300px; /* Fixed height for the sidebar */
+    background-color: #2b2c37;
+    color: white;
+    z-index: 1000;
+            
+ /* CHANGED: Transition along Y-axis - starts hidden instead of visible */
+    transform: translateY(-100%); /* Hidden by default - slides UP out of view */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+ }
+
+  #side-bar-div.visible {
+            transform: translateY(0); /* Slide down to show */
+        }
+
+  #lower-btn{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+}
