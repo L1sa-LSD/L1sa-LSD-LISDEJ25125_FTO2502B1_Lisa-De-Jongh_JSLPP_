@@ -493,6 +493,8 @@ form select {
   padding-right: 1rem;
 }
 
+
+
 #save-btn {
  background-color: #635fc7;
  color: white;
@@ -554,7 +556,9 @@ form select {
    cursor: pointer; 
 }
 
-
+.mobile-sidebar-modal{
+  display: none; /* Hidden by default */
+}
 /* ========================
    Responsive Styles
 ======================== */
@@ -611,7 +615,7 @@ form select {
   }
 
   #header-board-name {
-   display:none; /* Hide board name on smaller screens */
+   display: none; /* Hide board name on smaller screens */
   }
 
   .task-div {
@@ -639,6 +643,13 @@ form select {
 
 /******** Mobile ********/
 @media screen and (max-width: 576px) {
+  
+  #save-btn{
+
+  }
+
+ #deletion-btn{}
+
   .card-column-main {
     grid-template-columns: minmax(
       0,
@@ -650,11 +661,92 @@ form select {
     padding: 24px;
   }
 
-  .remainder{
-        display: none;
+  .remainder {
+    display: none;
   }
+  
+  .mobile-sidebar-modal.show{
+    display: block; /* Show sidebar modal on mobile */
+  }
+  
+  /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  top: 0;
+  left: 0;
+  width: 100%;/*Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
 
 
+}
+
+/* Modal Content */
+.modal-content {
+  position:fixed;
+  top: 0;
+  display: block;
+  border-radius: 15px;
+  background-color: #fefefe;
+  width: 70%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+  color: red;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+}
 
 
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {top: -300px; opacity: 0} 
+  to {top: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+.modal::after{
+  display: block;
+  background-color: white;
+  justify-content: center;
+}
 }
