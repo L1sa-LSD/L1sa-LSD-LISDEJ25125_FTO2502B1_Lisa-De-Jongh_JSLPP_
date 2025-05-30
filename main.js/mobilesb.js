@@ -1,6 +1,7 @@
 
+
 // Get the modal
-var modal = document.getElementById("mobile-side-bar");
+var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("mobile-logo-trigger");
