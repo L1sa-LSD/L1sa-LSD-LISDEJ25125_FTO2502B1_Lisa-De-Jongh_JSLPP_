@@ -28,4 +28,4 @@ Veed Presentation link
 
 Deploy to Netlify
 
-[Netlify Link]([![Netlify Status](https://api.netlify.com/api/v1/badges/71f71728-3037-469c-acfb-5eac11433a7b/deploy-status)](https://app.netlify.com/projects/l1sa-lisdejongh180kanbanjspp/deploys))
+[Netlify Link click here =>]([![Netlify Status](https://api.netlify.com/api/v1/badges/71f71728-3037-469c-acfb-5eac11433a7b/deploy-status)](https://app.netlify.com/projects/l1sa-lisdejongh180kanbanjspp/deploys))
