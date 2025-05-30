@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -50,10 +51,12 @@
             src="assets/favicon.svg"
             alt="logo-mobile"
             class="logo-mobile"
+            id="mobile-logo-trigger"
           />
           <h2 class="header-board-name" id="header-board-name">
-            Launch Career
+             Launch Career
           </h2>
+
         </div>
         <div class="Move-Task">
                <button id= "adding-btn" >+<strong class = "remainder"> Add New Tasks </strong> </button> <!--Added the add new task button and will use media query to manipulate the size-->
@@ -114,13 +117,13 @@
           <option value="doing">doing</option>
           <option value="done">done</option>
         </select>
-        <div id= "save-delete-btns">
+        <div class= "save-delete-btns">
          <button type="submit" id="save-btn">Save Task</button>
          <button type="submit" id="deletion-btn">Delete Task</button>
         </div>
       </form>
     </dialog>
-        <!-- Modal: New Modal  -->
+        <!-- Modal: Add Tasks  -->
     <dialog id="add-task-modal">
       <form method="dialog" id="add-task-form">
         <div class="modal-header">
@@ -142,11 +145,39 @@
         <button type="submit" id="save-task-btn">Create Task</button>
       </form>
     </dialog>
+
+<!-- Modal: Sidebar -->
+<section class="mobile-sidebar-modal">
+<div id="mobile-side-bar" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+       <span class="close">&times;</span> <!--the closed button-->
+       <h4 id="headline-sidepanel">ALL BOARDS (1)</h4>
+    </div>
+    <div class="modal-body">
+      <button class="board-btn">Launch Career</button>
+    </div>
+    <section class="theme-btn">
+      <div id= "switcher"> 
+        ☀️
+       <label class="switch">
+         <input type="checkbox" id="theme-switch">
+         <span class="slider round"></span>
+        </label>
+        🌙
+      </div>
+    </section>
+  </div>
+</div>
+</section>
+
+
   </body>
       <script type="module" src="./initialData.js"></script>
       <script type="module" src="./script.js"></script>
-      <script type="module" src="main.js/task.js"></script>
-      <script type="module" src="main.js/save.js"></script>
+      <script type="module" src="main.js/newTasks.js"></script>
       <script type="module" src="main.js/theme.js"></script>
       <script type="module" src="main.js/sidebar.js"></script>
+      <script type="module" src="main.js/mobilesb.js"></script>
 </html>
