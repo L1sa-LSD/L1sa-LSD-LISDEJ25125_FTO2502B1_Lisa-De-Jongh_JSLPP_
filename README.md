@@ -22,10 +22,10 @@ This Kanban application enhances productivity with a user-friendly interface. It
 
 Veed Presentation link 
 
-[Presentation](https://www.veed.io/view/bce700a9-e8a5-45af-b166-3c994f28dd5f?panel=share)
+[Presentation Link](https://www.veed.io/view/bce700a9-e8a5-45af-b166-3c994f28dd5f?panel=share)
 
 ## Deploment link
 
 Deploy to Netlify
 
-[Deploy](https://github.com/matiassingers/awesome-readme)
+[Netlify Link](l1sa-lisdejongh180kanbanjspp.netlify.app)
